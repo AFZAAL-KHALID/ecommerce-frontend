@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
-import Collection from "./pages/collections.jsx";
+import Collection from "./pages/Collections.jsx";
 import About from "./pages/About.jsx";
 import Product from "./pages/Product.jsx";
 import Cart from "./pages/Cart.jsx";
