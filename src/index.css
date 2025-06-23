@@ -1,0 +1,30 @@
+@font-face {
+  font-family:alpha ;
+  src: url(../public/Assests/Fonts/a.otf);
+}
+@font-face {
+  font-family:bravo;
+  src: url(../public/Assests/Fonts/b.ttf);
+}
+
+@import "tailwindcss";
+
+body{
+  font-family: bravo;
+}
+
+a.active hr{
+  color: red;
+  display: block;
+}
+
+.icon{
+    font-size: x-large;
+}
+
+@media (max-width:640px){
+  a.active{
+    background: black;
+    color: white;
+  }
+}
