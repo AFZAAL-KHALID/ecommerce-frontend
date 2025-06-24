@@ -11,7 +11,6 @@ import { setToken, showHideSearchBar } from ".././features/ProductSlice";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
-
   const location = useLocation();
   const [visible, setvisible] = useState(false);
   const navigate = useNavigate();
@@ -19,18 +18,15 @@ const Navbar = () => {
   const totalItemsCart = useSelector((state) => state.counter.totalItemsCart);
   const token = useSelector((state) => state.counter.token);
 
-
-
   const removeToken = () => {
     localStorage.removeItem("token");
-    dispatch(setToken(""))
+    dispatch(setToken(""));
     navigate("/login");
     toast.success("Logged out successfully!", {
       icon: <LuLogOut />,
       autoClose: 1500,
     });
   };
-  
 
   return (
     <>
@@ -39,7 +35,7 @@ const Navbar = () => {
           {" "}
           <div className="logoDiv w-18 sm:w-36 h-18 sm:h-24 inline-block">
             <img
-              src="../../public/Assests/Images/LOGO.png"
+              src="/Assests/Images/LOGO.png"
               alt="logoImage"
               className="w-full h-full object-cover"
             />
@@ -113,14 +109,17 @@ const Navbar = () => {
 
             <div
               className={`${
-               location.pathname === "/login" ? "hidden" : "group-hover:block"
+                location.pathname === "/login" ? "hidden" : "group-hover:block"
               } dropDown  hidden  absolute right-full top-[-50%]  pt-4`}
             >
               <div className="flex px-2 flex-col gap-2 w-35 py-3 bg-slate-100 text-gray-500 rounded">
                 <p className=" cursor-pointer hover:text-black">My Profile</p>
-                <p className=" cursor-pointer hover:text-black"
-                onClick={()=> navigate('/orders')}
-                >Order</p>
+                <p
+                  className=" cursor-pointer hover:text-black"
+                  onClick={() => navigate("/orders")}
+                >
+                  Order
+                </p>
                 <p
                   className=" cursor-pointer hover:text-black"
                   onClick={() => removeToken()}
@@ -133,7 +132,11 @@ const Navbar = () => {
 
           <Link to="/cart" className="relative ">
             <CiShoppingCart className="icon text-gray-500 hover:text-gray-800 w-6 h-6 cursor-pointer" />
-            <p className={`${token ? '' : 'hidden'} absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px] `}>
+            <p
+              className={`${
+                token ? "" : "hidden"
+              } absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px] `}
+            >
               {totalItemsCart}
             </p>
           </Link>

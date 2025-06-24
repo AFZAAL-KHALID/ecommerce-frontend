@@ -11,7 +11,7 @@ const About = () => {
 
     <div className="my-10 flex flex-col md:flex-row gap-16 mb-20 ">
      {/* left */}
-      <img src="./../../public/Assests/Images/about.jfif" className='w-full md:max-w-[300px] md:w-2/4' alt="" />
+      <img src="/Assests/Images/about.jfif" className='w-full md:max-w-[300px] md:w-2/4'/>
 
      {/* right */}
       <div className='flex flex-col justify-center gap-6 md-w-2/4 text-gray-600'>
