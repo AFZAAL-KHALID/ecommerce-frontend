@@ -24,9 +24,9 @@ const Collection = () => {
     if (category.length > 0) {
       productsCopy = productsCopy.filter((item) =>
         category.includes(item.category)
-      );
-    }
-    setfilteredArray(productsCopy);
+    );
+  }
+  setfilteredArray(productsCopy);
   };
 
   const sortProduct = () => {
