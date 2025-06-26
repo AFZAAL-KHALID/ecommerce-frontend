@@ -10,13 +10,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { setToken, showHideSearchBar } from ".././features/ProductSlice";
 import { toast } from "react-toastify";
 
+
 const Navbar = () => {
   const location = useLocation();
   const [visible, setvisible] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const totalItemsCart = useSelector((state) => state.counter.totalItemsCart);
+  console.log(totalItemsCart);
+  
   const token = useSelector((state) => state.counter.token);
+  const [profileOptions, setprofileOptions] = useState(false)
 
   const removeToken = () => {
     localStorage.removeItem("token");
@@ -27,6 +31,9 @@ const Navbar = () => {
       autoClose: 1500,
     });
   };
+
+
+  
 
   return (
     <>
@@ -101,16 +108,17 @@ const Navbar = () => {
           />
 
           {/* ---------profile */}
-          <div className="profile-div group relative">
+          <div 
+          onClick={()=> setprofileOptions(prev => !prev)}
+          className="profile-div group relative">
             <Link to={"/login"}>
-              {" "}
               <CiUser className="icon text-gray-500  hover:text-gray-800  w-6 h-6 cursor-pointer" />
             </Link>
 
-            <div
+            <div // ----profile Options
               className={`${
-                location.pathname === "/login" ? "hidden" : "group-hover:block"
-              } dropDown  hidden  absolute right-full top-[-50%]  pt-4`}
+                location.pathname === "/login" ? "hidden" : "block"
+              } dropDown ${profileOptions === true ? '': 'hidden'}  absolute right-full top-[-50%]  pt-4`}
             >
               <div className="flex px-2 flex-col gap-2 w-35 py-3 bg-slate-100 text-gray-500 rounded">
                 <p className=" cursor-pointer hover:text-black">My Profile</p>
@@ -137,7 +145,7 @@ const Navbar = () => {
                 token ? "" : "hidden"
               } absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px] `}
             >
-              {totalItemsCart}
+              {Number(totalItemsCart)}
             </p>
           </Link>
 

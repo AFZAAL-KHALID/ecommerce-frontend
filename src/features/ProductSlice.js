@@ -6,6 +6,8 @@ const parsedCart =
   savedCart && savedCart !== "undefined"
     ? JSON.parse(savedCart).filter((item) => item && Object.keys(item).length > 0)
     : [];
+  export  const CartItemLength = savedCart.length
+  
 
 const initialState = {
   value: 0,
@@ -20,6 +22,7 @@ const initialState = {
   Cart: parsedCart || [],
   totalItemsCart: parsedCart.reduce((sum, item) => sum + item.quantity, 0),
 };
+
 
 const ProductSlice = createSlice({
   name: "counter",
@@ -43,8 +46,10 @@ const ProductSlice = createSlice({
       state.totalItemsCart--;
     },
     addDataFromBackend: (state, action) => {
+      localStorage.setItem('cart', JSON.stringify([action.payload]))
       state.allProducts = action.payload;
     },
+
     setToken: (state, action) => {
       state.token = action.payload;
     },
